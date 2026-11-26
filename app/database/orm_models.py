@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import Column, String, Integer, ForeignKey, Index
 from app.database.database import Base
 
 
@@ -41,6 +41,15 @@ class CourseORM(Base):
 class EnrollmentORM(Base):
 
     __tablename__ = "enrollments"
+
+    __table_args__ = (
+        Index(
+            "uq_student_course",
+            "student_id",
+            "course_id",
+            unique=True
+        ),
+    )
 
     enrollment_id = Column(String, primary_key=True)
 

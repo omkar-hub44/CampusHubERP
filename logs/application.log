@@ -163,3 +163,1547 @@ sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed
 2026-11-26 18:18:54,808 - INFO - StudentORM record created successfully
 2026-11-26 18:18:54,809 - INFO - StudentORM record deleted successfully
 2026-11-26 18:18:54,825 - WARNING - StudentORM record not found
+2026-11-26 18:44:38,014 - INFO - StudentORM record created successfully
+2026-11-26 18:44:38,051 - INFO - StudentORM record created successfully
+2026-11-26 18:44:38,085 - INFO - StudentORM record created successfully
+2026-11-26 18:44:38,132 - INFO - StudentORM record created successfully
+2026-11-26 18:44:38,137 - INFO - StudentORM record updated successfully
+2026-11-26 18:44:38,166 - INFO - StudentORM record created successfully
+2026-11-26 18:44:38,171 - INFO - StudentORM record deleted successfully
+2026-11-26 18:44:38,218 - INFO - StudentORM record created successfully
+2026-11-26 18:44:38,222 - ERROR - Error creating StudentORM record
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: students.email
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\app\database\repository.py", line 15, in create
+    self.db.commit()
+    ~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2177, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.commit>", line 2, in commit
+    return target(fn, self, _to_root=_to_root)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1412, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._prepare_impl>", line 2, in _prepare_impl
+    return target(fn, self)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1386, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4626, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>", line 2, in _flush
+    return target(fn, self, objects=objects)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4769, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4730, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 643, in execute
+    util.preloaded.orm_persistence._save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 92, in _save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1065, in _emit_insert_statements
+    result = connection.execute(
+        statement, multiparams, execution_options=execution_options
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1494, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: students.email
+[SQL: INSERT INTO students (student_id, name, age, email, department) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('ST001', 'Rahul', 20, 'rahul@gmail.com', 'CS')]
+(Background on this error at: https://sqlalche.me/e/21/gkpj)
+2026-11-26 18:44:38,310 - INFO - FacultyORM record created successfully
+2026-11-26 18:44:38,335 - INFO - FacultyORM record created successfully
+2026-11-26 18:44:38,342 - INFO - CourseORM record created successfully
+2026-11-26 18:44:38,379 - INFO - StudentORM record created successfully
+2026-11-26 18:44:38,388 - INFO - FacultyORM record created successfully
+2026-11-26 18:44:38,395 - INFO - CourseORM record created successfully
+2026-11-26 18:44:38,406 - INFO - EnrollmentORM record created successfully
+2026-11-26 18:44:38,424 - INFO - StudentORM record created successfully
+2026-11-26 18:44:38,432 - INFO - FacultyORM record created successfully
+2026-11-26 18:44:38,440 - INFO - CourseORM record created successfully
+2026-11-26 18:44:38,450 - INFO - EnrollmentORM record created successfully
+2026-11-26 18:44:38,530 - INFO - StudentORM record created successfully
+2026-11-26 18:44:38,537 - INFO - StudentORM record created successfully
+2026-11-26 18:44:38,544 - INFO - StudentORM record created successfully
+2026-11-26 18:44:38,553 - INFO - StudentORM record created successfully
+2026-11-26 18:44:38,557 - INFO - StudentORM record updated successfully
+2026-11-26 18:44:38,564 - INFO - StudentORM record created successfully
+2026-11-26 18:44:38,565 - INFO - StudentORM record deleted successfully
+2026-11-26 18:44:38,581 - WARNING - StudentORM record not found
+2026-11-26 18:46:22,575 - INFO - StudentORM record created successfully
+2026-11-26 18:46:22,618 - INFO - StudentORM record created successfully
+2026-11-26 18:46:22,637 - INFO - StudentORM record created successfully
+2026-11-26 18:46:22,683 - INFO - StudentORM record created successfully
+2026-11-26 18:46:22,689 - INFO - StudentORM record updated successfully
+2026-11-26 18:46:22,702 - INFO - StudentORM record created successfully
+2026-11-26 18:46:22,707 - INFO - StudentORM record deleted successfully
+2026-11-26 18:46:22,751 - INFO - StudentORM record created successfully
+2026-11-26 18:46:22,755 - ERROR - Error creating StudentORM record
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: students.email
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\app\database\repository.py", line 15, in create
+    self.db.commit()
+    ~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2177, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.commit>", line 2, in commit
+    return target(fn, self, _to_root=_to_root)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1412, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._prepare_impl>", line 2, in _prepare_impl
+    return target(fn, self)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1386, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4626, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>", line 2, in _flush
+    return target(fn, self, objects=objects)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4769, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4730, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 643, in execute
+    util.preloaded.orm_persistence._save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 92, in _save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1065, in _emit_insert_statements
+    result = connection.execute(
+        statement, multiparams, execution_options=execution_options
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1494, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: students.email
+[SQL: INSERT INTO students (student_id, name, age, email, department) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('ST001', 'Rahul', 20, 'rahul@gmail.com', 'CS')]
+(Background on this error at: https://sqlalche.me/e/21/gkpj)
+2026-11-26 18:46:22,821 - INFO - FacultyORM record created successfully
+2026-11-26 18:46:22,838 - INFO - FacultyORM record created successfully
+2026-11-26 18:46:22,846 - INFO - CourseORM record created successfully
+2026-11-26 18:46:22,880 - INFO - StudentORM record created successfully
+2026-11-26 18:46:22,885 - INFO - FacultyORM record created successfully
+2026-11-26 18:46:22,890 - INFO - CourseORM record created successfully
+2026-11-26 18:46:22,903 - INFO - EnrollmentORM record created successfully
+2026-11-26 18:46:22,932 - INFO - StudentORM record created successfully
+2026-11-26 18:46:22,939 - INFO - FacultyORM record created successfully
+2026-11-26 18:46:22,947 - INFO - CourseORM record created successfully
+2026-11-26 18:46:22,954 - INFO - EnrollmentORM record created successfully
+2026-11-26 18:46:23,046 - INFO - StudentORM record created successfully
+2026-11-26 18:46:23,053 - INFO - StudentORM record created successfully
+2026-11-26 18:46:23,062 - INFO - StudentORM record created successfully
+2026-11-26 18:46:23,070 - INFO - StudentORM record created successfully
+2026-11-26 18:46:23,071 - INFO - StudentORM record updated successfully
+2026-11-26 18:46:23,079 - INFO - StudentORM record created successfully
+2026-11-26 18:46:23,080 - INFO - StudentORM record deleted successfully
+2026-11-26 18:46:23,092 - WARNING - StudentORM record not found
+2026-11-26 18:47:02,533 - INFO - StudentORM record created successfully
+2026-11-26 18:47:02,567 - INFO - StudentORM record created successfully
+2026-11-26 18:47:02,585 - INFO - StudentORM record created successfully
+2026-11-26 18:47:02,639 - INFO - StudentORM record created successfully
+2026-11-26 18:47:02,645 - INFO - StudentORM record updated successfully
+2026-11-26 18:47:02,659 - INFO - StudentORM record created successfully
+2026-11-26 18:47:02,665 - INFO - StudentORM record deleted successfully
+2026-11-26 18:47:02,708 - INFO - StudentORM record created successfully
+2026-11-26 18:47:02,712 - ERROR - Error creating StudentORM record
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: students.email
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\app\database\repository.py", line 15, in create
+    self.db.commit()
+    ~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2177, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.commit>", line 2, in commit
+    return target(fn, self, _to_root=_to_root)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1412, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._prepare_impl>", line 2, in _prepare_impl
+    return target(fn, self)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1386, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4626, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>", line 2, in _flush
+    return target(fn, self, objects=objects)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4769, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4730, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 643, in execute
+    util.preloaded.orm_persistence._save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 92, in _save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1065, in _emit_insert_statements
+    result = connection.execute(
+        statement, multiparams, execution_options=execution_options
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1494, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: students.email
+[SQL: INSERT INTO students (student_id, name, age, email, department) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('ST001', 'Rahul', 20, 'rahul@gmail.com', 'CS')]
+(Background on this error at: https://sqlalche.me/e/21/gkpj)
+2026-11-26 18:47:02,793 - INFO - FacultyORM record created successfully
+2026-11-26 18:47:02,808 - INFO - FacultyORM record created successfully
+2026-11-26 18:47:02,818 - INFO - CourseORM record created successfully
+2026-11-26 18:47:02,863 - INFO - StudentORM record created successfully
+2026-11-26 18:47:02,869 - INFO - FacultyORM record created successfully
+2026-11-26 18:47:02,876 - INFO - CourseORM record created successfully
+2026-11-26 18:47:02,887 - INFO - EnrollmentORM record created successfully
+2026-11-26 18:47:02,900 - INFO - StudentORM record created successfully
+2026-11-26 18:47:02,907 - INFO - FacultyORM record created successfully
+2026-11-26 18:47:02,915 - INFO - CourseORM record created successfully
+2026-11-26 18:47:02,923 - INFO - EnrollmentORM record created successfully
+2026-11-26 18:47:03,039 - INFO - StudentORM record created successfully
+2026-11-26 18:47:03,046 - INFO - StudentORM record created successfully
+2026-11-26 18:47:03,054 - INFO - StudentORM record created successfully
+2026-11-26 18:47:03,063 - INFO - StudentORM record created successfully
+2026-11-26 18:47:03,064 - INFO - StudentORM record updated successfully
+2026-11-26 18:47:03,072 - INFO - StudentORM record created successfully
+2026-11-26 18:47:03,073 - INFO - StudentORM record deleted successfully
+2026-11-26 18:47:03,087 - WARNING - StudentORM record not found
+2026-11-26 19:28:48,529 - INFO - StudentORM record created successfully
+2026-11-26 19:28:48,548 - INFO - StudentORM record created successfully
+2026-11-26 19:28:48,571 - INFO - StudentORM record created successfully
+2026-11-26 19:28:48,595 - INFO - StudentORM record created successfully
+2026-11-26 19:28:48,602 - INFO - StudentORM record updated successfully
+2026-11-26 19:28:48,617 - INFO - StudentORM record created successfully
+2026-11-26 19:28:48,625 - INFO - StudentORM record deleted successfully
+2026-11-26 19:28:48,663 - INFO - StudentORM record created successfully
+2026-11-26 19:28:48,668 - ERROR - Error creating StudentORM record
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: students.email
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\app\database\repository.py", line 15, in create
+    self.db.commit()
+    ~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2177, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.commit>", line 2, in commit
+    return target(fn, self, _to_root=_to_root)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1412, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._prepare_impl>", line 2, in _prepare_impl
+    return target(fn, self)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1386, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4626, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>", line 2, in _flush
+    return target(fn, self, objects=objects)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4769, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4730, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 643, in execute
+    util.preloaded.orm_persistence._save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 92, in _save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1065, in _emit_insert_statements
+    result = connection.execute(
+        statement, multiparams, execution_options=execution_options
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1494, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: students.email
+[SQL: INSERT INTO students (student_id, name, age, email, department) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('ST001', 'Rahul', 20, 'rahul@gmail.com', 'CS')]
+(Background on this error at: https://sqlalche.me/e/21/gkpj)
+2026-11-26 19:28:48,734 - INFO - FacultyORM record created successfully
+2026-11-26 19:28:48,756 - INFO - FacultyORM record created successfully
+2026-11-26 19:28:48,766 - INFO - CourseORM record created successfully
+2026-11-26 19:28:48,805 - INFO - StudentORM record created successfully
+2026-11-26 19:28:48,812 - INFO - FacultyORM record created successfully
+2026-11-26 19:28:48,821 - INFO - CourseORM record created successfully
+2026-11-26 19:28:48,831 - INFO - EnrollmentORM record created successfully
+2026-11-26 19:28:48,847 - INFO - StudentORM record created successfully
+2026-11-26 19:28:48,854 - INFO - FacultyORM record created successfully
+2026-11-26 19:28:48,862 - INFO - CourseORM record created successfully
+2026-11-26 19:28:48,870 - INFO - EnrollmentORM record created successfully
+2026-11-26 19:29:09,418 - INFO - StudentORM record created successfully
+2026-11-26 19:29:09,436 - INFO - StudentORM record created successfully
+2026-11-26 19:29:09,458 - INFO - StudentORM record created successfully
+2026-11-26 19:29:09,478 - INFO - StudentORM record created successfully
+2026-11-26 19:29:09,485 - INFO - StudentORM record updated successfully
+2026-11-26 19:29:09,514 - INFO - StudentORM record created successfully
+2026-11-26 19:29:09,520 - INFO - StudentORM record deleted successfully
+2026-11-26 19:29:09,558 - INFO - StudentORM record created successfully
+2026-11-26 19:29:09,562 - ERROR - Error creating StudentORM record
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: students.email
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\app\database\repository.py", line 15, in create
+    self.db.commit()
+    ~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2177, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.commit>", line 2, in commit
+    return target(fn, self, _to_root=_to_root)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1412, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._prepare_impl>", line 2, in _prepare_impl
+    return target(fn, self)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1386, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4626, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>", line 2, in _flush
+    return target(fn, self, objects=objects)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4769, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4730, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 643, in execute
+    util.preloaded.orm_persistence._save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 92, in _save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1065, in _emit_insert_statements
+    result = connection.execute(
+        statement, multiparams, execution_options=execution_options
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1494, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: students.email
+[SQL: INSERT INTO students (student_id, name, age, email, department) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('ST001', 'Rahul', 20, 'rahul@gmail.com', 'CS')]
+(Background on this error at: https://sqlalche.me/e/21/gkpj)
+2026-11-26 19:29:09,615 - INFO - FacultyORM record created successfully
+2026-11-26 19:29:09,632 - INFO - FacultyORM record created successfully
+2026-11-26 19:29:09,641 - INFO - CourseORM record created successfully
+2026-11-26 19:29:09,685 - INFO - StudentORM record created successfully
+2026-11-26 19:29:09,692 - INFO - FacultyORM record created successfully
+2026-11-26 19:29:09,700 - INFO - CourseORM record created successfully
+2026-11-26 19:29:09,709 - INFO - EnrollmentORM record created successfully
+2026-11-26 19:29:09,724 - INFO - StudentORM record created successfully
+2026-11-26 19:29:09,732 - INFO - FacultyORM record created successfully
+2026-11-26 19:29:09,740 - INFO - CourseORM record created successfully
+2026-11-26 19:29:09,747 - INFO - EnrollmentORM record created successfully
+2026-11-26 19:29:43,673 - INFO - StudentORM record created successfully
+2026-11-26 19:29:43,692 - INFO - StudentORM record created successfully
+2026-11-26 19:29:43,715 - INFO - StudentORM record created successfully
+2026-11-26 19:29:43,738 - INFO - StudentORM record created successfully
+2026-11-26 19:29:43,745 - INFO - StudentORM record updated successfully
+2026-11-26 19:29:43,777 - INFO - StudentORM record created successfully
+2026-11-26 19:29:43,782 - INFO - StudentORM record deleted successfully
+2026-11-26 19:29:43,823 - INFO - StudentORM record created successfully
+2026-11-26 19:29:43,828 - ERROR - Error creating StudentORM record
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: students.email
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\app\database\repository.py", line 15, in create
+    self.db.commit()
+    ~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2177, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.commit>", line 2, in commit
+    return target(fn, self, _to_root=_to_root)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1412, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._prepare_impl>", line 2, in _prepare_impl
+    return target(fn, self)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1386, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4626, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>", line 2, in _flush
+    return target(fn, self, objects=objects)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4769, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4730, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 643, in execute
+    util.preloaded.orm_persistence._save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 92, in _save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1065, in _emit_insert_statements
+    result = connection.execute(
+        statement, multiparams, execution_options=execution_options
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1494, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: students.email
+[SQL: INSERT INTO students (student_id, name, age, email, department) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('ST001', 'Rahul', 20, 'rahul@gmail.com', 'CS')]
+(Background on this error at: https://sqlalche.me/e/21/gkpj)
+2026-11-26 19:29:43,882 - INFO - FacultyORM record created successfully
+2026-11-26 19:29:43,900 - INFO - FacultyORM record created successfully
+2026-11-26 19:29:43,909 - INFO - CourseORM record created successfully
+2026-11-26 19:29:43,963 - INFO - StudentORM record created successfully
+2026-11-26 19:29:43,975 - INFO - FacultyORM record created successfully
+2026-11-26 19:29:43,986 - INFO - CourseORM record created successfully
+2026-11-26 19:29:44,007 - INFO - EnrollmentORM record created successfully
+2026-11-26 19:29:44,037 - INFO - StudentORM record created successfully
+2026-11-26 19:29:44,043 - INFO - FacultyORM record created successfully
+2026-11-26 19:29:44,050 - INFO - CourseORM record created successfully
+2026-11-26 19:29:44,059 - INFO - EnrollmentORM record created successfully
+2026-11-26 19:29:44,151 - INFO - StudentORM record created successfully
+2026-11-26 19:29:44,160 - INFO - StudentORM record created successfully
+2026-11-26 19:29:44,167 - INFO - StudentORM record created successfully
+2026-11-26 19:29:44,176 - INFO - StudentORM record created successfully
+2026-11-26 19:29:44,177 - INFO - StudentORM record updated successfully
+2026-11-26 19:29:44,185 - INFO - StudentORM record created successfully
+2026-11-26 19:29:44,186 - INFO - StudentORM record deleted successfully
+2026-11-26 19:29:44,199 - WARNING - StudentORM record not found
+2026-11-26 19:30:27,895 - INFO - StudentORM record created successfully
+2026-11-26 19:30:27,911 - INFO - StudentORM record created successfully
+2026-11-26 19:30:27,932 - INFO - StudentORM record created successfully
+2026-11-26 19:30:27,956 - INFO - StudentORM record created successfully
+2026-11-26 19:30:27,964 - INFO - StudentORM record updated successfully
+2026-11-26 19:30:28,006 - INFO - StudentORM record created successfully
+2026-11-26 19:30:28,011 - INFO - StudentORM record deleted successfully
+2026-11-26 19:30:28,069 - INFO - StudentORM record created successfully
+2026-11-26 19:30:28,073 - ERROR - Error creating StudentORM record
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: students.email
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\app\database\repository.py", line 15, in create
+    self.db.commit()
+    ~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2177, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.commit>", line 2, in commit
+    return target(fn, self, _to_root=_to_root)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1412, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._prepare_impl>", line 2, in _prepare_impl
+    return target(fn, self)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1386, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4626, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>", line 2, in _flush
+    return target(fn, self, objects=objects)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4769, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4730, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 643, in execute
+    util.preloaded.orm_persistence._save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 92, in _save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1065, in _emit_insert_statements
+    result = connection.execute(
+        statement, multiparams, execution_options=execution_options
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1494, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: students.email
+[SQL: INSERT INTO students (student_id, name, age, email, department) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('ST001', 'Rahul', 20, 'rahul@gmail.com', 'CS')]
+(Background on this error at: https://sqlalche.me/e/21/gkpj)
+2026-11-26 19:30:28,152 - INFO - FacultyORM record created successfully
+2026-11-26 19:30:28,165 - INFO - FacultyORM record created successfully
+2026-11-26 19:30:28,174 - INFO - CourseORM record created successfully
+2026-11-26 19:30:28,215 - INFO - StudentORM record created successfully
+2026-11-26 19:30:28,221 - INFO - FacultyORM record created successfully
+2026-11-26 19:30:28,227 - INFO - CourseORM record created successfully
+2026-11-26 19:30:28,238 - INFO - EnrollmentORM record created successfully
+2026-11-26 19:30:28,253 - INFO - StudentORM record created successfully
+2026-11-26 19:30:28,258 - INFO - FacultyORM record created successfully
+2026-11-26 19:30:28,264 - INFO - CourseORM record created successfully
+2026-11-26 19:30:28,273 - INFO - EnrollmentORM record created successfully
+2026-11-26 19:30:28,364 - INFO - StudentORM record created successfully
+2026-11-26 19:30:28,372 - INFO - StudentORM record created successfully
+2026-11-26 19:30:28,380 - INFO - StudentORM record created successfully
+2026-11-26 19:30:28,389 - INFO - StudentORM record created successfully
+2026-11-26 19:30:28,390 - INFO - StudentORM record updated successfully
+2026-11-26 19:30:28,398 - INFO - StudentORM record created successfully
+2026-11-26 19:30:28,399 - INFO - StudentORM record deleted successfully
+2026-11-26 19:30:28,413 - WARNING - StudentORM record not found
+2026-11-26 19:30:45,953 - INFO - StudentORM record created successfully
+2026-11-26 19:30:45,990 - INFO - StudentORM record created successfully
+2026-11-26 19:30:46,008 - INFO - StudentORM record created successfully
+2026-11-26 19:30:46,033 - INFO - StudentORM record created successfully
+2026-11-26 19:30:46,038 - INFO - StudentORM record updated successfully
+2026-11-26 19:30:46,067 - INFO - StudentORM record created successfully
+2026-11-26 19:30:46,072 - INFO - StudentORM record deleted successfully
+2026-11-26 19:30:46,105 - INFO - StudentORM record created successfully
+2026-11-26 19:30:46,111 - ERROR - Error creating StudentORM record
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: students.email
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\app\database\repository.py", line 15, in create
+    self.db.commit()
+    ~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2177, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.commit>", line 2, in commit
+    return target(fn, self, _to_root=_to_root)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1412, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._prepare_impl>", line 2, in _prepare_impl
+    return target(fn, self)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1386, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4626, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>", line 2, in _flush
+    return target(fn, self, objects=objects)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4769, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4730, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 643, in execute
+    util.preloaded.orm_persistence._save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 92, in _save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1065, in _emit_insert_statements
+    result = connection.execute(
+        statement, multiparams, execution_options=execution_options
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1494, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: students.email
+[SQL: INSERT INTO students (student_id, name, age, email, department) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('ST001', 'Rahul', 20, 'rahul@gmail.com', 'CS')]
+(Background on this error at: https://sqlalche.me/e/21/gkpj)
+2026-11-26 19:30:46,189 - INFO - FacultyORM record created successfully
+2026-11-26 19:30:46,210 - INFO - FacultyORM record created successfully
+2026-11-26 19:30:46,221 - INFO - CourseORM record created successfully
+2026-11-26 19:30:46,277 - INFO - StudentORM record created successfully
+2026-11-26 19:30:46,286 - INFO - FacultyORM record created successfully
+2026-11-26 19:30:46,294 - INFO - CourseORM record created successfully
+2026-11-26 19:30:46,308 - INFO - EnrollmentORM record created successfully
+2026-11-26 19:30:46,328 - INFO - StudentORM record created successfully
+2026-11-26 19:30:46,336 - INFO - FacultyORM record created successfully
+2026-11-26 19:30:46,344 - INFO - CourseORM record created successfully
+2026-11-26 19:30:46,355 - INFO - EnrollmentORM record created successfully
+2026-11-26 19:30:46,502 - INFO - StudentORM record created successfully
+2026-11-26 19:30:46,509 - INFO - StudentORM record created successfully
+2026-11-26 19:30:46,520 - INFO - StudentORM record created successfully
+2026-11-26 19:30:46,528 - INFO - StudentORM record created successfully
+2026-11-26 19:30:46,530 - INFO - StudentORM record updated successfully
+2026-11-26 19:30:46,538 - INFO - StudentORM record created successfully
+2026-11-26 19:30:46,539 - INFO - StudentORM record deleted successfully
+2026-11-26 19:30:46,555 - WARNING - StudentORM record not found
+2026-11-26 19:46:58,362 - INFO - StudentORM record created successfully
+2026-11-26 19:46:58,391 - INFO - StudentORM record created successfully
+2026-11-26 19:46:58,435 - INFO - StudentORM record created successfully
+2026-11-26 19:46:58,463 - INFO - StudentORM record created successfully
+2026-11-26 19:46:58,469 - INFO - StudentORM record updated successfully
+2026-11-26 19:46:58,492 - INFO - StudentORM record created successfully
+2026-11-26 19:46:58,498 - INFO - StudentORM record deleted successfully
+2026-11-26 19:46:58,549 - INFO - StudentORM record created successfully
+2026-11-26 19:46:58,553 - ERROR - Error creating StudentORM record
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: students.email
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\app\database\repository.py", line 15, in create
+    self.db.commit()
+    ~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2177, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.commit>", line 2, in commit
+    return target(fn, self, _to_root=_to_root)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1412, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._prepare_impl>", line 2, in _prepare_impl
+    return target(fn, self)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1386, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4626, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>", line 2, in _flush
+    return target(fn, self, objects=objects)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4769, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4730, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 643, in execute
+    util.preloaded.orm_persistence._save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 92, in _save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1065, in _emit_insert_statements
+    result = connection.execute(
+        statement, multiparams, execution_options=execution_options
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1494, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: students.email
+[SQL: INSERT INTO students (student_id, name, age, email, department) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('ST001', 'Rahul', 20, 'rahul@gmail.com', 'CS')]
+(Background on this error at: https://sqlalche.me/e/21/gkpj)
+2026-11-26 19:46:58,649 - INFO - FacultyORM record created successfully
+2026-11-26 19:46:58,677 - INFO - FacultyORM record created successfully
+2026-11-26 19:46:58,684 - INFO - CourseORM record created successfully
+2026-11-26 19:46:58,762 - INFO - StudentORM record created successfully
+2026-11-26 19:46:58,769 - INFO - FacultyORM record created successfully
+2026-11-26 19:46:58,776 - INFO - CourseORM record created successfully
+2026-11-26 19:46:58,784 - INFO - EnrollmentORM record created successfully
+2026-11-26 19:46:58,823 - INFO - StudentORM record created successfully
+2026-11-26 19:46:58,830 - INFO - FacultyORM record created successfully
+2026-11-26 19:46:58,837 - INFO - CourseORM record created successfully
+2026-11-26 19:46:58,844 - INFO - EnrollmentORM record created successfully
+2026-11-26 19:46:58,966 - INFO - StudentORM record created successfully
+2026-11-26 19:46:58,972 - INFO - StudentORM record created successfully
+2026-11-26 19:46:58,980 - INFO - StudentORM record created successfully
+2026-11-26 19:46:58,988 - INFO - StudentORM record created successfully
+2026-11-26 19:46:58,990 - INFO - StudentORM record updated successfully
+2026-11-26 19:46:58,998 - INFO - StudentORM record created successfully
+2026-11-26 19:46:59,001 - INFO - StudentORM record deleted successfully
+2026-11-26 19:46:59,012 - WARNING - StudentORM record not found
+2026-11-26 19:47:57,272 - INFO - StudentORM record created successfully
+2026-11-26 19:47:57,298 - INFO - StudentORM record created successfully
+2026-11-26 19:47:57,342 - INFO - StudentORM record created successfully
+2026-11-26 19:47:57,388 - INFO - StudentORM record created successfully
+2026-11-26 19:47:57,396 - INFO - StudentORM record updated successfully
+2026-11-26 19:47:57,418 - INFO - StudentORM record created successfully
+2026-11-26 19:47:57,423 - INFO - StudentORM record deleted successfully
+2026-11-26 19:47:57,488 - INFO - StudentORM record created successfully
+2026-11-26 19:47:57,492 - ERROR - Error creating StudentORM record
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: students.email
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\OJT2026\CampusHubERP\app\database\repository.py", line 15, in create
+    self.db.commit()
+    ~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2177, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.commit>", line 2, in commit
+    return target(fn, self, _to_root=_to_root)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1412, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._prepare_impl>", line 2, in _prepare_impl
+    return target(fn, self)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1386, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4626, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>", line 2, in _flush
+    return target(fn, self, objects=objects)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4769, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4730, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 467, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 643, in execute
+    util.preloaded.orm_persistence._save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 92, in _save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1065, in _emit_insert_statements
+    result = connection.execute(
+        statement, multiparams, execution_options=execution_options
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1494, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<9 lines>...
+        param_dict=param_dict,
+    )
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\OJT2026\CampusHubERP\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: students.email
+[SQL: INSERT INTO students (student_id, name, age, email, department) VALUES (?, ?, ?, ?, ?)]
+[parameters: ('ST001', 'Rahul', 20, 'rahul@gmail.com', 'CS')]
+(Background on this error at: https://sqlalche.me/e/21/gkpj)
+2026-11-26 19:47:57,576 - INFO - FacultyORM record created successfully
+2026-11-26 19:47:57,600 - INFO - FacultyORM record created successfully
+2026-11-26 19:47:57,607 - INFO - CourseORM record created successfully
+2026-11-26 19:47:57,657 - INFO - StudentORM record created successfully
+2026-11-26 19:47:57,663 - INFO - FacultyORM record created successfully
+2026-11-26 19:47:57,670 - INFO - CourseORM record created successfully
+2026-11-26 19:47:57,683 - INFO - EnrollmentORM record created successfully
+2026-11-26 19:47:57,726 - INFO - StudentORM record created successfully
+2026-11-26 19:47:57,731 - INFO - FacultyORM record created successfully
+2026-11-26 19:47:57,737 - INFO - CourseORM record created successfully
+2026-11-26 19:47:57,743 - INFO - EnrollmentORM record created successfully
+2026-11-26 19:47:57,868 - INFO - StudentORM record created successfully
+2026-11-26 19:47:57,873 - INFO - StudentORM record created successfully
+2026-11-26 19:47:57,884 - INFO - StudentORM record created successfully
+2026-11-26 19:47:57,891 - INFO - StudentORM record created successfully
+2026-11-26 19:47:57,895 - INFO - StudentORM record updated successfully
+2026-11-26 19:47:57,902 - INFO - StudentORM record created successfully
+2026-11-26 19:47:57,903 - INFO - StudentORM record deleted successfully
+2026-11-26 19:47:57,918 - WARNING - StudentORM record not found

@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
+
+from fastapi import APIRouter, HTTPException
 from sqlalchemy.exc import IntegrityError
 
-from app.database.database import get_db
-from app.services.database_service import DatabaseService
+from app.models.student import Student
+from app.services import student_service
 from app.api.schemas import StudentSchema
 
 
@@ -11,42 +11,43 @@ router = APIRouter(prefix="/students", tags=["Students"])
 
 
 @router.post("/", status_code=201)
-def add_student(student: StudentSchema, db: Session = Depends(get_db)):
-    service = DatabaseService(db)
+def add_student(student: StudentSchema):
 
     try:
-        return service.students.create(student.model_dump())
+        student_obj = Student(**student.model_dump())
+        return student_service.add_student(student_obj)
+
     except IntegrityError:
         raise HTTPException(
             status_code=409,
             detail="Student ID or email already exists"
         )
 
+    except ValueError as error:
+        raise HTTPException(status_code=422, detail=str(error))
+
 
 @router.get("/")
-def get_all_students(db: Session = Depends(get_db)):
-    service = DatabaseService(db)
-    return service.students.get_all()
+def get_all_students():
+    return student_service.get_all_students()
 
 
 @router.get("/{student_id}")
-def get_student(student_id: str, db: Session = Depends(get_db)):
-    service = DatabaseService(db)
-    student = service.students.get_by_id(student_id)
+def get_student(student_id: str):
+
+    student = student_service.get_student(student_id)
 
     if student is None:
-        raise HTTPException(status_code=404, detail="Student not found")
+        raise HTTPException(
+            status_code=404,
+            detail="Student not found"
+        )
 
     return student
 
 
 @router.put("/{student_id}")
-def update_student(
-    student_id: str,
-    student: StudentSchema,
-    db: Session = Depends(get_db)
-):
-    service = DatabaseService(db)
+def update_student(student_id: str, student: StudentSchema):
 
     if student_id != student.student_id:
         raise HTTPException(
@@ -55,25 +56,35 @@ def update_student(
         )
 
     try:
-        updated_student = service.students.update(
+        updated_student = student_service.update_student(
             student_id,
-            student.model_dump(exclude={"student_id"})
+            name=student.name,
+            age=student.age,
+            email=student.email,
+            department=student.department
         )
+
     except IntegrityError:
-        raise HTTPException(status_code=409, detail="Email already exists")
+        raise HTTPException(
+            status_code=409,
+            detail="Email already exists"
+        )
 
     if updated_student is None:
-        raise HTTPException(status_code=404, detail="Student not found")
+        raise HTTPException(
+            status_code=404,
+            detail="Student not found"
+        )
 
     return updated_student
 
 
 @router.delete("/{student_id}")
-def delete_student(student_id: str, db: Session = Depends(get_db)):
-    service = DatabaseService(db)
+def delete_student(student_id: str):
 
     try:
-        deleted = service.students.delete(student_id)
+        deleted = student_service.delete_student(student_id)
+
     except IntegrityError:
         raise HTTPException(
             status_code=409,
@@ -81,6 +92,11 @@ def delete_student(student_id: str, db: Session = Depends(get_db)):
         )
 
     if not deleted:
-        raise HTTPException(status_code=404, detail="Student not found")
+        raise HTTPException(
+            status_code=404,
+            detail="Student not found"
+        )
 
-    return {"message": "Student deleted successfully"}
+    return {
+        "message": "Student deleted successfully"
+    }

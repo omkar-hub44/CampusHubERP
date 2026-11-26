@@ -1,47 +1,35 @@
-from datetime import datetime
 
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
+from fastapi import APIRouter, HTTPException
 from sqlalchemy.exc import IntegrityError
 
-from app.database.database import get_db
-from app.services.database_service import DatabaseService
+from app.models.enrollment import Enrollment
+from app.services import enrollment_service
 from app.api.schemas import EnrollmentSchema
-from app.database.orm_models import EnrollmentORM
 
 
 router = APIRouter(prefix="/enrollments", tags=["Enrollments"])
 
 
 @router.post("/", status_code=201)
-def add_enrollment(
-    enrollment: EnrollmentSchema,
-    db: Session = Depends(get_db)
-):
-    service = DatabaseService(db)
-
-    if service.students.get_by_id(enrollment.student_id) is None:
-        raise HTTPException(status_code=404, detail="Student not found")
-
-    if service.courses.get_by_id(enrollment.course_id) is None:
-        raise HTTPException(status_code=404, detail="Course not found")
-
-    existing = db.query(EnrollmentORM).filter_by(
-        student_id=enrollment.student_id,
-        course_id=enrollment.course_id
-    ).first()
-
-    if existing:
-        raise HTTPException(
-            status_code=409,
-            detail="Student is already enrolled in this course"
-        )
-
-    data = enrollment.model_dump()
-    data["enrollment_date"] = datetime.now().isoformat()
+def add_enrollment(enrollment: EnrollmentSchema):
 
     try:
-        return service.enrollments.create(data)
+        enrollment_obj = Enrollment(
+            enrollment_id=enrollment.enrollment_id,
+            student_id=enrollment.student_id,
+            course_id=enrollment.course_id
+        )
+
+        return enrollment_service.add_enrollment(enrollment_obj)
+
+    except ValueError as error:
+        message = str(error)
+
+        if message == "Student not found" or message == "Course not found":
+            raise HTTPException(status_code=404, detail=message)
+
+        raise HTTPException(status_code=409, detail=message)
+
     except IntegrityError:
         raise HTTPException(
             status_code=409,
@@ -50,18 +38,14 @@ def add_enrollment(
 
 
 @router.get("/")
-def get_all_enrollments(db: Session = Depends(get_db)):
-    service = DatabaseService(db)
-    return service.enrollments.get_all()
+def get_all_enrollments():
+    return enrollment_service.get_all_enrollments()
 
 
 @router.get("/{enrollment_id}")
-def get_enrollment(
-    enrollment_id: str,
-    db: Session = Depends(get_db)
-):
-    service = DatabaseService(db)
-    enrollment = service.enrollments.get_by_id(enrollment_id)
+def get_enrollment(enrollment_id: str):
+
+    enrollment = enrollment_service.get_enrollment(enrollment_id)
 
     if enrollment is None:
         raise HTTPException(
@@ -72,61 +56,12 @@ def get_enrollment(
     return enrollment
 
 
-@router.put("/{enrollment_id}")
-def update_enrollment(
-    enrollment_id: str,
-    enrollment: EnrollmentSchema,
-    db: Session = Depends(get_db)
-):
-    service = DatabaseService(db)
-
-    if enrollment_id != enrollment.enrollment_id:
-        raise HTTPException(
-            status_code=400,
-            detail="Enrollment ID cannot be changed"
-        )
-
-    if service.enrollments.get_by_id(enrollment_id) is None:
-        raise HTTPException(status_code=404, detail="Enrollment not found")
-
-    if service.students.get_by_id(enrollment.student_id) is None:
-        raise HTTPException(status_code=404, detail="Student not found")
-
-    if service.courses.get_by_id(enrollment.course_id) is None:
-        raise HTTPException(status_code=404, detail="Course not found")
-
-    existing = db.query(EnrollmentORM).filter(
-        EnrollmentORM.student_id == enrollment.student_id,
-        EnrollmentORM.course_id == enrollment.course_id,
-        EnrollmentORM.enrollment_id != enrollment_id
-    ).first()
-
-    if existing:
-        raise HTTPException(
-            status_code=409,
-            detail="Student is already enrolled in this course"
-        )
-
-    try:
-        return service.enrollments.update(
-            enrollment_id,
-            enrollment.model_dump(exclude={"enrollment_id"})
-        )
-    except IntegrityError:
-        raise HTTPException(
-            status_code=409,
-            detail="Enrollment could not be updated"
-        )
-
-
 @router.delete("/{enrollment_id}")
-def delete_enrollment(
-    enrollment_id: str,
-    db: Session = Depends(get_db)
-):
-    service = DatabaseService(db)
+def delete_enrollment(enrollment_id: str):
 
-    if not service.enrollments.delete(enrollment_id):
+    deleted = enrollment_service.delete_enrollment(enrollment_id)
+
+    if not deleted:
         raise HTTPException(
             status_code=404,
             detail="Enrollment not found"

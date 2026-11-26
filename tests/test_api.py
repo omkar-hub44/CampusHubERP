@@ -1,3 +1,4 @@
+
 import pytest
 
 from fastapi.testclient import TestClient
@@ -6,11 +7,19 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
 from app.main import app
-from app.database.database import Base, get_db
+from app.database.database import Base
+
+from app.services import (
+    student_service,
+    faculty_service,
+    course_service,
+    enrollment_service
+)
 
 
 @pytest.fixture
-def client():
+def client(monkeypatch):
+
     engine = create_engine(
         "sqlite:///:memory:",
         connect_args={"check_same_thread": False},
@@ -22,22 +31,34 @@ def client():
         connection.execute("PRAGMA foreign_keys=ON")
 
     Base.metadata.create_all(bind=engine)
-    TestingSession = sessionmaker(bind=engine)
 
-    def override_get_db():
-        db = TestingSession()
-        try:
-            yield db
-        finally:
-            db.close()
+    TestingSession = sessionmaker(
+        bind=engine,
+        expire_on_commit=False
+    )
 
-    app.dependency_overrides[get_db] = override_get_db
+    # Connect all service modules to the temporary test database
+    monkeypatch.setattr(
+        student_service, "SessionLocal", TestingSession
+    )
+
+    monkeypatch.setattr(
+        faculty_service, "SessionLocal", TestingSession
+    )
+
+    monkeypatch.setattr(
+        course_service, "SessionLocal", TestingSession
+    )
+
+    monkeypatch.setattr(
+        enrollment_service, "SessionLocal", TestingSession
+    )
 
     try:
         with TestClient(app) as test_client:
             yield test_client
+
     finally:
-        app.dependency_overrides.clear()
         engine.dispose()
 
 
@@ -194,6 +215,7 @@ def test_enrollment_invalid_student(client):
     )
 
     assert response.status_code == 404
+
 
 def test_blank_student_name(client):
     invalid_data = {**student_data, "name": "   "}
