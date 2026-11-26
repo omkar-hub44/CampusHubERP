@@ -1,0 +1,4 @@
+STUDENT REPORT
+========================================
+{'student_id': 'ST001', 'name': 'Rahul', 'age': 20, 'email': 'rahul@gmail.com', 'department': 'CS'}
+{'student_id': 'ST002', 'name': 'Priya', 'age': 21, 'email': 'priya@gmail.com', 'department': 'IT'}

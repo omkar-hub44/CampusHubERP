@@ -1,0 +1,9 @@
+[
+    {
+        "faculty_id": "FC001",
+        "name": "Amit",
+        "age": 35,
+        "email": "amit@gmail.com",
+        "department": "CS"
+    }
+]
